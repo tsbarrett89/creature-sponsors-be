@@ -12,3 +12,7 @@ module.exports = {
 function add(creds) {
     return db('user').insert(creds, "id")
 }
+
+function findAll() {
+    return db('user')
+}

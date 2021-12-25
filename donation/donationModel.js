@@ -26,6 +26,10 @@ function findByCampaign(campaign_id) {
     return db('donation').where({ campaign_id })
 }
 
+function findByUser(user_id) {
+    return db('donation').where({ user_id })
+}
+
 function update(updates, id) {
     return db('donation').where({ id }).update(updates)
 }

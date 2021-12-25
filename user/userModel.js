@@ -20,3 +20,7 @@ function findAll() {
 function findById(id) {
     return db('user').where({ id: id })
 }
+
+function findByEmail(email) {
+    return db('user').where({ email: email })
+}

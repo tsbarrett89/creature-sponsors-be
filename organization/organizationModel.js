@@ -31,6 +31,10 @@ function findByName(name) {
     return db('organization').where({ name })
 }
 
+function findByLocation(location) {
+    return db('organization').where({ location })
+}
+
 function update(updates, id) {
     return db('organization').where({ id }).update(updates)
 }

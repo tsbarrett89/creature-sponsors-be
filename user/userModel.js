@@ -28,3 +28,7 @@ function findByEmail(email) {
 function update(updates, id) {
     return db('user').where({ id }).update(updates)
 }
+
+function remove(id) {
+    return db('user').where({ id }).del()
+}

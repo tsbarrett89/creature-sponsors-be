@@ -18,9 +18,13 @@ function findAll() {
 }
 
 function findById(id) {
-    return db('user').where({ id: id })
+    return db('user').where({ id })
 }
 
 function findByEmail(email) {
-    return db('user').where({ email: email })
+    return db('user').where({ email })
+}
+
+function update(updates, id) {
+    return db('user').where({ id }).update(updates)
 }

@@ -16,3 +16,7 @@ function add(creds) {
 function findAll() {
     return db('user')
 }
+
+function findById(id) {
+    return db('user').where({ id: id })
+}

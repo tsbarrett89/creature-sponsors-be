@@ -28,6 +28,10 @@ function findByName(name) {
     return db('user').where({ name })
 }
 
+function findByLocation(location) {
+    return db('campaign').where({ location })
+}
+
 function update(updates, id) {
     return db('user').where({ id }).update(updates)
 }

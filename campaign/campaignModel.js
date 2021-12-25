@@ -36,6 +36,10 @@ function findByAnimal(animal) {
     return db('campaign').where({ animal })
 }
 
+function findByOrg(org_id) {
+    return db('campaign').where({ org_id })
+}
+
 function update(updates, id) {
     return db('campaign').where({ id }).update(updates)
 }

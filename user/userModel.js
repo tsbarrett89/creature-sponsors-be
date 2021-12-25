@@ -8,3 +8,7 @@ module.exports = {
     update,
     remove
 }
+
+function add(creds) {
+    return db('user').insert(creds, "id")
+}

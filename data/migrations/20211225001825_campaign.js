@@ -24,6 +24,8 @@ exports.up = function(knex) {
             .defaultTo('')
         tbl.text('description_long')
             .notNullable()
+        tbl.dateTime('deadline')
+            .notNullable();
     })
 };
 

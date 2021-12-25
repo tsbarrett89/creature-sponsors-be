@@ -13,19 +13,19 @@ module.exports = {
 }
 
 function add(creds) {
-    return db('user').insert(creds, "id")
+    return db('campaign').insert(creds, "id")
 }
 
 function findAll() {
-    return db('user')
+    return db('campaign')
 }
 
 function findById(id) {
-    return db('user').where({ id })
+    return db('campaign').where({ id })
 }
 
 function findByName(name) {
-    return db('user').where({ name })
+    return db('campaign').where({ name })
 }
 
 function findByLocation(location) {
@@ -33,9 +33,9 @@ function findByLocation(location) {
 }
 
 function update(updates, id) {
-    return db('user').where({ id }).update(updates)
+    return db('campaign').where({ id }).update(updates)
 }
 
 function remove(id) {
-    return db('user').where({ id }).del()
+    return db('campaign').where({ id }).del()
 }

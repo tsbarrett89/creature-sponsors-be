@@ -7,6 +7,11 @@ exports.up = function(knex) {
             .unique();
         tbl.string('password')
             .notNullable();
+        tbl.string('name')
+            .notNullable()
+            .unique();
+        tbl.string('location')
+            .notNullable()
     })
 };
 

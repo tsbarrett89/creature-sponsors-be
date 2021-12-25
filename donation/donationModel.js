@@ -4,7 +4,8 @@ module.exports = {
     add,
     findAll,
     findById,
-    findByEmail,
+    findByCampaign,
+    findByUser,
     update,
     remove
 }
@@ -21,8 +22,8 @@ function findById(id) {
     return db('donation').where({ id })
 }
 
-function findByEmail(email) {
-    return db('donation').where({ email })
+function findByCampaign(campaign_id) {
+    return db('donation').where({ campaign_id })
 }
 
 function update(updates, id) {

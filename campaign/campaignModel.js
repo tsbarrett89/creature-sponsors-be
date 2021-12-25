@@ -32,6 +32,10 @@ function findByLocation(location) {
     return db('campaign').where({ location })
 }
 
+function findByAnimal(animal) {
+    return db('campaign').where({ animal })
+}
+
 function update(updates, id) {
     return db('campaign').where({ id }).update(updates)
 }

@@ -5,6 +5,8 @@ module.exports = {
     findAll,
     findById,
     findByEmail,
+    findByName,
+    findByLocation,
     update,
     remove
 }
@@ -23,6 +25,10 @@ function findById(id) {
 
 function findByEmail(email) {
     return db('organization').where({ email })
+}
+
+function findByName(name) {
+    return db('organization').where({ name })
 }
 
 function update(updates, id) {

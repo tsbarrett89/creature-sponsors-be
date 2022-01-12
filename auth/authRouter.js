@@ -25,3 +25,5 @@ router.post('/register/user', (req, res) => {
         res.status(400).json({ errorMessage: "Email and password are required to register."})
     }
 })
+
+module.exports = router;

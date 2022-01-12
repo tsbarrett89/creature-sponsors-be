@@ -14,7 +14,12 @@ router.post('/register/user', (req, res) => {
         
         user.add(creds)
             .then(newUser => {
-                
+                const token = generateToken(newUser[0])
+
+                res.status(201).json({ email: creds.email, token, user_id: newUser[0]});
+            })
+            .catch(error => {
+                res.status(409).json({ errorMessage: `${creds.email} already exists`});
             })
     } else {
         res.status(400).json({ errorMessage: "Email and password are required to register."})

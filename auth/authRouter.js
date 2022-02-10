@@ -14,7 +14,8 @@ router.post('/register/user', (req, res) => {
         
         user.add(creds)
             .then(newUser => {
-                const token = generateToken(newUser[0])
+                const token = generateToken(newUser)
+                console.log(token)
 
                 res.status(201).json({ email: creds.email, token, user_id: newUser[0]});
             })

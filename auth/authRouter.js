@@ -27,4 +27,16 @@ router.post('/register/user', (req, res) => {
     }
 })
 
+function generateToken(id){
+    const payload = {
+        subject: id,
+    };
+    const secret = 'Secret sauce';
+    const options = {
+        expiresIn: '1d'
+    }
+
+    return jwt.sign(payload, secret, options)
+}
+
 module.exports = router;

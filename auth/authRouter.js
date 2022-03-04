@@ -37,6 +37,23 @@ router.post('/register/user', (req, res) => {
     }
 })
 
+router.post('/register/org', (req, res) => {
+    const { email, password, name, location } = req.body
+
+    if( email && password && name && location){
+        org.findByEmail(email)
+            .then(existing => {
+                if(existing[0]){
+                    res.status(409).json({ errorMessage: `Organization with ${email} already exists`})
+                } else {
+
+                }
+            })
+    } else {
+        res.status(400).json({ errorMessage: "Email, password, name, and location required to register"})
+    }
+})
+
 function generateToken(id){
     const payload = {
         subject: id,

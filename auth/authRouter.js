@@ -12,7 +12,7 @@ router.post('/register/user', (req, res) => {
         user.findByEmail(creds.email)
             .then(existing => {
                 if(existing[0]){
-                    res.status(409).json({ errorMessage: `${creds.email} already exists`});
+                    res.status(409).json({ errorMessage: `User account for ${creds.email} already exists`});
                 } else {
                     const hash = bcrypt.hashSync(creds.password, 12);
                     creds.password = hash;
@@ -27,10 +27,10 @@ router.post('/register/user', (req, res) => {
                             res.status(500).json({ errorMessage: 'Unable to register user.'});
                         })
                     }
-                
             })
-                
-            .catch()
+            .catch(error => {
+                res.status(500).json({ errorMessage: "Unable to verify if account already exists."})
+            })
         
     } else {
         res.status(400).json({ errorMessage: "Email and password are required to register."})

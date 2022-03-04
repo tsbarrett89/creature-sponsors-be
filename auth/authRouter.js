@@ -11,7 +11,6 @@ router.post('/register/user', (req, res) => {
     if (creds.email && creds.password){
         user.findByEmail(creds.email)
             .then(existing => {
-                console.log(existing)
                 if(existing[0]){
                     res.status(409).json({ errorMessage: `${creds.email} already exists`});
                 } else {

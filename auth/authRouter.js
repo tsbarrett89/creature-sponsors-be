@@ -66,10 +66,20 @@ router.post('/register/org', (req, res) => {
 })
 
 router.post('login/user', (req, res) => {
-    const creds = req.body
+    const { email, password } = req.body
 
     if( creds.email && creds.password ){
-
+        user.findByEmail(email)
+            .first()
+            .then(account => {
+                if( account && bcrypt.compareSync(password, account.password)){
+                    const token = generateToken(account.id)
+                    res.status(200).json({ email: account.email, token, id: account.id})
+                } else {
+                    res.status(401).json({ errorMessage: "Invalid credentials."})
+                }
+            })
+            .catch()
     } else {
         res.status(400).json({ errorMessage: "Email and password required to login."})
     }

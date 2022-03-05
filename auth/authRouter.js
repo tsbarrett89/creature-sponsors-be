@@ -38,15 +38,26 @@ router.post('/register/user', (req, res) => {
 })
 
 router.post('/register/org', (req, res) => {
-    const { email, password, name, location } = req.body
+    const creds = req.body
 
-    if( email && password && name && location){
-        org.findByEmail(email)
+    if( cresds.email && creds.password && creds.name && creds.location){
+        org.findByEmail(creds.email)
             .then(existing => {
                 if(existing[0]){
                     res.status(409).json({ errorMessage: `Organization with ${email} already exists`})
                 } else {
+                    const hash = bcrypt.hashSync(creds.password, 12)
+                    creds.password = hash
 
+                    org.add(creds)
+                        .then(newOrg => {
+                            const token = generateToken(newOrg)
+
+                            res.status(201).json({ email: creds.email, token, org_id: newOrg[0]})
+                        })
+                        .catch(error => {
+                            res.status(500).json({ errorMessage: "Unable to register organization." })
+                        })
                 }
             })
     } else {

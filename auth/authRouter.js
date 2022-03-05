@@ -40,11 +40,11 @@ router.post('/register/user', (req, res) => {
 router.post('/register/org', (req, res) => {
     const creds = req.body
 
-    if( cresds.email && creds.password && creds.name && creds.location){
+    if( creds.email && creds.password && creds.name && creds.location){
         org.findByEmail(creds.email)
             .then(existing => {
                 if(existing[0]){
-                    res.status(409).json({ errorMessage: `Organization with ${email} already exists`})
+                    res.status(409).json({ errorMessage: `Organization with ${creds.email} already exists`})
                 } else {
                     const hash = bcrypt.hashSync(creds.password, 12)
                     creds.password = hash
